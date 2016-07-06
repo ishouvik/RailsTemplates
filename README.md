@@ -4,7 +4,7 @@ I hate repeating the same steps while creating my Rails applications. Instead, I
 Please, feel to use the templates for your Rails apps and suggest chnages in the [issues](https://github.com/ishouvik/RailsTemplates/issues) section
 
 ## What's included
-- iShouvik Rails Templates: Mongoid
+- iShouvik Rails Templates: [Mongoid](https://github.com/ishouvik/RailsTemplates/tree/master/mongoid)
 - iShouvik Rails Templates: ActiveRecord (coming soon)
 
 

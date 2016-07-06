@@ -11,8 +11,9 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - Docker ready
 
 ## Usage
-- Generate the application from the template `rails new myapp -O -m /path/to/template.rb`
-- Set the `SECRET_KEY_BASE` value in **production.env**
+- Clone this repo `git clone git@github.com:ishouvik/RailsTemplates.git`
+- Generate the application from the *Mongoid* template `rails new myapp -O -m /RailsTemplates/mongoid/template.rb`
+- Set the `SECRET_KEY_BASE` value in **production.env** file
 - Cleanup the **Gemfile**
 
 ## Docker setup
