@@ -29,6 +29,7 @@ after_bundle do
   run 'rails g mongoid:config'
   puts "\n================ MONGOID CONFIG FILE GENERATED ================\n"
 
+  remove_file 'app/assets/javascripts/application.js'
   run 'rails g layout:install bootstrap3'
   remove_file 'app/assets/stylesheets/application.css'
   copy_file 'app/assets/stylesheets/application.scss'
@@ -43,7 +44,12 @@ after_bundle do
   puts "\n================ APPLICATION ROOT GENERATED ================\n"
 
   copy_file 'Dockerfile'
-  copy_file 'docker-compose-yml'
+  copy_file 'docker-compose.yml'
   copy_file 'production.env'
   puts "\n================ DOCKER READY ================\n"
+
+  run 'git init'
+  run 'git add --all'
+  run 'git commit -m "Intial commit"'
+  puts "\n================ GIT INITIALIZED ================\n"
 end
