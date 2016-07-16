@@ -12,7 +12,7 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 ## Usage
 - Clone this repo `git clone git@github.com:ishouvik/RailsTemplates.git`
 - Generate the application from the *Mongoid* template `rails new myapp -m /RailsTemplates/activerecord/template.rb`
-- Set the `SECRET_KEY_BASE` value in **production.env** file
+- Change environment variables in **.env** file
 - Cleanup the **Gemfile**
 
 
