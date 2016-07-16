@@ -5,7 +5,7 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 
 ## What's included
 - iShouvik Rails Templates: [Mongoid](https://github.com/ishouvik/RailsTemplates/tree/master/mongoid)
-- iShouvik Rails Templates: ActiveRecord
+- iShouvik Rails Templates: [ActiveRecord](https://github.com/ishouvik/RailsTemplates/tree/master/activerecord)
 
 ## Feel free to ping me:
 - [LinkedIn](https://in.linkedin.com/in/shouvikmukherjee)
