@@ -8,6 +8,7 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - Bootstrap layout using *Bootstrap SaaS* and *RailsLayout*
 - SimpleForm
 - Kaminari
+- Dotenv-Rails
 
 ## Usage
 - Clone this repo `git clone git@github.com:ishouvik/RailsTemplates.git`
