@@ -1,4 +1,4 @@
-# iShouvik Rails Templates: Mongoid
+# iShouvik Rails Templates: ActiveRecord
 This is an easy to use Rails template for Mogoid.
 
 Please, feel to use the templates for your Rails apps and suggest chnages in the [issues](https://github.com/ishouvik/RailsTemplates/issues) section
