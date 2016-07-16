@@ -5,13 +5,6 @@ def source_paths
     [File.expand_path(File.dirname(__FILE__))]
 end
 
-# Add gems to Gemfile
-gem 'puma'
-gem 'mongoid', '~> 5.1.0'
-gem 'bootstrap-sass', '~> 3.3.6'
-gem 'simple_form'
-gem 'kaminari'
-
 gem_group :development do
   gem 'rails_layout'
 end
@@ -19,15 +12,32 @@ end
 gem_group :development, :test do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'guard-livereload'
+  gem 'dotenv-rails'
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
+
+gem_group :production do
+  gem 'pg'
+  gem 'rails_12factor'
+end
+
+gem 'puma'
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'simple_form'
+gem 'kaminari'
 
 
 after_bundle do
   run 'bundle exec guard init'
   puts "\n================ GUARDFILE GENERATED ================\n"
 
-  run 'rails g mongoid:config'
-  puts "\n================ MONGOID CONFIG FILE GENERATED ================\n"
+  copy_file '.env'
+  puts "\n================ ENV FILE GENERATED ================\n"
+
+  remove_file 'config/database.yml'
+  copy_file 'config/database.yml'
+  puts "\n================ DATABASE CONFIG GENERATED ================\n"
 
   copy_file 'config/puma.rb'
   copy_file 'Procfile'
@@ -46,11 +56,6 @@ after_bundle do
   generate 'controller static_pages home'
   route "root to: 'static_pages#home'"
   puts "\n================ APPLICATION ROOT GENERATED ================\n"
-
-  copy_file 'Dockerfile'
-  copy_file 'docker-compose.yml'
-  copy_file 'production.env'
-  puts "\n================ DOCKER READY ================\n"
 
   run 'git init'
   run 'git add --all'

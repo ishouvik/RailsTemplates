@@ -1,0 +1,25 @@
+default: &default
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+
+postgresql: &postgresql
+  adapter: postgresql
+  encoding: unicode
+  username: <%= ENV['DB_USERNAME'] %>
+  host:     <%= ENV['DB_HOST'] %>
+  password: <%= ENV['DB_PASSWORD'] %>
+  database: <%= ENV['DB_NAME'] %>
+  pool: 10
+
+development:
+  <<: *default
+  database: db/development.sqlite3
+
+
+test:
+  <<: *default
+  database: db/test.sqlite3
+
+production:
+  <<: *postgresql
