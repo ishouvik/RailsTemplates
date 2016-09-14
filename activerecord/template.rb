@@ -22,7 +22,6 @@ gem_group :production do
   gem 'rails_12factor'
 end
 
-gem 'puma'
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'simple_form'
 gem 'kaminari'
@@ -39,9 +38,8 @@ after_bundle do
   copy_file 'config/database.yml'
   puts "\n================ DATABASE CONFIG GENERATED ================\n"
 
-  copy_file 'config/puma.rb'
   copy_file 'Procfile'
-  puts "\n================ PUMA CONFIG GENERATED ================\n"
+  puts "\n================ PROCFILE GENERATED ================\n"
 
   remove_file 'app/assets/javascripts/application.js'
   run 'rails g layout:install bootstrap3'

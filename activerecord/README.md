@@ -23,4 +23,4 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - [Mail: contact (a) ishouvik.com](mailto:contact@ishouvik.com)
 
 ## ToDO
-- Make the template Docekr ready
+- Make the template Docker ready
