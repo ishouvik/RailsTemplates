@@ -50,8 +50,15 @@ after_bundle do
   puts "\n================ ENV FILE GENERATED ================\n"
 
   remove_file 'config/database.yml'
-  copy_file 'config/database.yml'
+  copy_file   'config/database.yml'
   puts "\n================ DATABASE CONFIG GENERATED ================\n"
+
+  remove_file 'test/test_helper.rb'
+  copy_file   'test/test_helper.rb'
+  puts "\n================ TEST HELPER GENERATED ================\n"
+
+  generate "forgery"
+  puts "\n================ FORGERY DICTIONARIES GENERATED ================\n"
 
   copy_file 'Procfile'
   puts "\n================ PROCFILE GENERATED ================\n"
@@ -68,10 +75,7 @@ after_bundle do
 
   generate 'controller static_pages home'
   route "root to: 'static_pages#home'"
-  puts "\n================ APPLICATION ROOT GENERATED ================\n"
-
-  generate "minitest:install"
-  puts "\n================ TEST HELPER GENERATED ================\n"
+  puts "\n================ APPLICATION ROOT GENERATED ================\n" 
 
   run 'git init'
   run 'git add --all'
