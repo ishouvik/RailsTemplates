@@ -10,22 +10,37 @@ gem_group :development do
 end
 
 gem_group :development, :test do
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-livereload'
+   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'dotenv-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
+  gem 'minitest-rails'
+  gem 'factory_girl_rails'
+  gem 'forgery'
+  gem 'rantly'
+  gem 'guard'
+  gem 'guard-minitest'
+  gem 'guard-livereload'
 end
 
 gem_group :production do
-  gem 'pg'
   gem 'rails_12factor'
 end
 
-gem 'bootstrap-sass', '~> 3.3.6'
+database_type = ask("Choice of database? [1] Pg | [2] MySQL ")
+
+if database_type == "2"
+  gem 'mysql'
+else
+  gem 'pg'
+end
+
+if yes?("Add Bootstrap? ( YES|NO )")
+  gem 'bootstrap-sass', '~> 3.3.6'
+end
+
 gem 'simple_form'
 gem 'kaminari'
-
 
 after_bundle do
   run 'bundle exec guard init'
@@ -54,6 +69,9 @@ after_bundle do
   generate 'controller static_pages home'
   route "root to: 'static_pages#home'"
   puts "\n================ APPLICATION ROOT GENERATED ================\n"
+
+  generate "minitest:install"
+  puts "\n================ TEST HELPER GENERATED ================\n"
 
   run 'git init'
   run 'git add --all'

@@ -4,11 +4,19 @@ This is an easy to use Rails template for ActiveRecord.
 Please, feel to use the templates for your Rails apps and suggest chnages in the [issues](https://github.com/ishouvik/RailsTemplates/issues) section
 
 ## What's included
-- Pg Gem
+- Pg/MySQL
 - Bootstrap layout using *Bootstrap SaaS* and *RailsLayout*
 - SimpleForm
 - Kaminari
 - Dotenv-Rails
+- Better Errors
+- Guard, Guard Livereload, Guard Minitest
+
+## Test suite
+- Minitest Rails
+- Factory Girl
+- Forgery
+- Rantly
 
 ## Usage
 - Clone this repo `git clone git@github.com:ishouvik/RailsTemplates.git`
