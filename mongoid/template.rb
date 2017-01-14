@@ -29,5 +29,5 @@ after_bundle do
   run 'git init'
   run 'git add --all'
   run 'git commit -m "Intial commit"'
-  puts "\n================ APPLICATION GENERATE. PLEASE UPDATE THE .env FILE AT THE ROOT OF YOUR NEW APPLICATION ================\n"
+  puts "\n================ APPLICATION GENERATED. PLEASE UPDATE THE .env FILE AT THE ROOT OF YOUR NEW APPLICATION ================\n"
 end
