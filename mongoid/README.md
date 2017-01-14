@@ -20,7 +20,7 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 ## Usage
 - Clone this repo `git clone git@github.com:ishouvik/RailsTemplates.git`
 - Generate the application from the *Mongoid* template `rails new myapp -O -T -m /RailsTemplates/mongoid/template.rb`
-- Create a `.env` file at the root of your application and store environment variables
+- Change environment variables in the **.env** file
 
 ## Feel free to ping me:
 - [LinkedIn](https://in.linkedin.com/in/shouvikmukherjee)

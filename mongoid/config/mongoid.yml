@@ -1,0 +1,25 @@
+production:
+  clients:
+    default:
+      database: <%= ENV['DB_NAME'] %>
+      hosts:
+        - <%= ENV['DB_HOST'] %>
+
+development:
+  clients:
+    default:
+      database: <%= ENV['DB_NAME'] %>
+      hosts:
+        - localhost:27017
+      options:
+
+test:
+  clients:
+    default:
+      database: <%= ENV['DB_NAME'] %>
+      hosts:
+        - <%= ENV['DB_HOST'] %>
+      options:
+        read:
+          mode: :primary
+        max_pool_size: 1
