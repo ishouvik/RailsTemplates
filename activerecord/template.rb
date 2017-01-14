@@ -10,7 +10,7 @@ gem_group :development do
 end
 
 gem_group :development, :test do
-   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
+  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'dotenv-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
@@ -75,7 +75,7 @@ after_bundle do
 
   generate 'controller static_pages home'
   route "root to: 'static_pages#home'"
-  puts "\n================ APPLICATION ROOT GENERATED ================\n" 
+  puts "\n================ APPLICATION ROOT GENERATED ================\n"
 
   run 'git init'
   run 'git add --all'

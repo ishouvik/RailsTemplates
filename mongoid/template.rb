@@ -5,52 +5,34 @@ def source_paths
     [File.expand_path(File.dirname(__FILE__))]
 end
 
-# Add gems to Gemfile
-gem_group :development do
-  gem 'rails_layout'
+def apply_template!
+  template "Gemfile.tt", :force => true
+  template   'test/test_helper.rb.tt', :force => true
+  copy_file 'app/assets/stylesheets/application.scss', :force => true
+  copy_file 'Procfile', :force => true
+  copy_file '.env.example'
 end
 
-gem_group :development, :test do
-  gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'guard-livereload'
-  gem 'dotenv-rails'
-  gem 'better_errors'
-  gem 'binding_of_caller'
-end
-
-# gem 'puma'
-gem 'mongoid'
-gem 'bootstrap-sass'
-gem 'simple_form'
-gem 'kaminari'
+apply_template!
 
 after_bundle do
   run 'bundle exec guard init'
-  puts "\n================ GUARDFILE GENERATED ================\n"
-
+  copy_file '.env'
   run 'rails g mongoid:config'
-  puts "\n================ MONGOID CONFIG FILE GENERATED ================\n"
-
-  # copy_file 'config/puma.rb'
-  copy_file 'Procfile'
-  puts "\n================ PUMA CONFIG GENERATED ================\n"
+  generate "forgery"
 
   remove_file 'app/assets/javascripts/application.js'
   run 'rails g layout:install bootstrap3'
   remove_file 'app/assets/stylesheets/application.css'
-  copy_file 'app/assets/stylesheets/application.scss'
-  puts "\n================ RAILS LAYOUT GENERATED ================\n"
 
   run 'rails g simple_form:install'
   run 'rails g simple_form:install --bootstrap'
-  puts "\n================ SIMPLEFORM INITIALIZERS GENERATED ================\n"
 
   generate 'controller static_pages home'
   route "root to: 'static_pages#home'"
-  puts "\n================ APPLICATION ROOT GENERATED ================\n"
 
   run 'git init'
   run 'git add --all'
   run 'git commit -m "Intial commit"'
-  puts "\n================ GIT INITIALIZED ================\n"
+  puts "\n================ ENV FILE GENERATED ================\n"
 end

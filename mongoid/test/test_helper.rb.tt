@@ -1,0 +1,8 @@
+ENV["RAILS_ENV"] = "test"
+require File.expand_path("../../config/environment", __FILE__)
+require "minitest/autorun"
+require "test_helper"
+
+class Minitest::Test
+  include FactoryGirl::Syntax::Methods
+end

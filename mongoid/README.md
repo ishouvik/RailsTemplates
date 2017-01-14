@@ -9,12 +9,18 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - SimpleForm
 - Kaminari
 - Dotenv-Rails
+- Better Errors
+- Guard, Guard Livereload, Guard Minitest
+
+## Test suite
+- Minitest Rails
+- Factory Girl
+- Forgery
 
 ## Usage
 - Clone this repo `git clone git@github.com:ishouvik/RailsTemplates.git`
-- Generate the application from the *Mongoid* template `rails new myapp -O -m /RailsTemplates/mongoid/template.rb`
-- Set the `SECRET_KEY_BASE` value in **.env** file
-- Cleanup the **Gemfile**
+- Generate the application from the *Mongoid* template `rails new myapp -O -T -m /RailsTemplates/mongoid/template.rb`
+- Create a `.env` file at the root of your application and store environment variables
 
 ## Feel free to ping me:
 - [LinkedIn](https://in.linkedin.com/in/shouvikmukherjee)
@@ -22,4 +28,5 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - [Mail: contact (a) ishouvik.com](mailto:contact@ishouvik.com)
 
 ## ToDO
+- Improve the views template
 - Make the template Docker ready
