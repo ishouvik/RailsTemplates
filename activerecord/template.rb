@@ -5,10 +5,6 @@ def source_paths
     [File.expand_path(File.dirname(__FILE__))]
 end
 
-gem_group :development do
-  gem 'rails_layout'
-end
-
 gem_group :development, :test do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
   gem 'dotenv-rails'
@@ -30,17 +26,26 @@ end
 database_type = ask("Choice of database? [1] Pg | [2] MySQL ")
 
 if database_type == "2"
-  gem 'mysql'
+  gem 'mysql2'
 else
   gem 'pg'
 end
 
-if yes?("Add Bootstrap? ( YES|NO )")
+bootstrap_library = ask('Add Bootstrap? [1] Yes | [2] No')
+
+if bootstrap_library == '1'
   gem 'bootstrap-sass', '~> 3.3.6'
+
+  gem_group :development do
+    gem 'rails_layout'
+  end
 end
 
 gem 'simple_form'
 gem 'kaminari'
+
+# Remove Sqlite3 gem
+gsub_file 'Gemfile', /gem 'sqlite3'\n/, ''
 
 after_bundle do
   run 'bundle exec guard init'
@@ -50,12 +55,19 @@ after_bundle do
   puts "\n================ ENV FILE GENERATED ================\n"
 
   remove_file 'config/database.yml'
-  copy_file   'config/database.yml'
+
+  if database_type == "2"
+    copy_file   'config/mysql/database.yml', 'config/database.yml'
+  else
+    copy_file   'config/postgresql/database.yml', 'config/database.yml'
+  end
   puts "\n================ DATABASE CONFIG GENERATED ================\n"
 
   remove_file 'test/test_helper.rb'
   copy_file   'test/test_helper.rb'
   puts "\n================ TEST HELPER GENERATED ================\n"
+
+  run "spring stop"
 
   generate "forgery"
   puts "\n================ FORGERY DICTIONARIES GENERATED ================\n"
@@ -63,15 +75,17 @@ after_bundle do
   copy_file 'Procfile'
   puts "\n================ PROCFILE GENERATED ================\n"
 
-  remove_file 'app/assets/javascripts/application.js'
-  run 'rails g layout:install bootstrap3'
-  remove_file 'app/assets/stylesheets/application.css'
-  copy_file 'app/assets/stylesheets/application.scss'
-  puts "\n================ RAILS LAYOUT GENERATED ================\n"
-
   run 'rails g simple_form:install'
-  run 'rails g simple_form:install --bootstrap'
   puts "\n================ SIMPLEFORM INITIALIZERS GENERATED ================\n"
+
+  if bootstrap_library == '1'
+    remove_file 'app/assets/javascripts/application.js'
+    run 'rails g layout:install bootstrap3'
+    remove_file 'app/assets/stylesheets/application.css'
+    copy_file 'app/assets/stylesheets/application.scss'
+    run 'rails g simple_form:install --bootstrap'
+    puts "\n================ RAILS LAYOUT GENERATED ================\n"
+  end
 
   generate 'controller static_pages home'
   route "root to: 'static_pages#home'"
