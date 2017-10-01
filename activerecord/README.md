@@ -24,12 +24,16 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - Change environment variables in **.env** file
 - Cleanup the **Gemfile**
 
-# Docker Usage
+# Docker Usage (MySQL)
 - Change the `DB_NAME` and `SECRET_KEY_BASE` values on the `.env.` file
 - Build and run the container: `docker-compose up -d`
 - If you make any change on the `Gemfile`. Force build the docker images for the changes to take place: `docker-compose up -d --build`
+- The default port for the app is `5000`
 
 ## Feel free to ping me:
 - [LinkedIn](https://in.linkedin.com/in/shouvikmukherjee)
 - [Twitted: @ishouvik](http://twitter.com/ishouvik)
 - [Mail: contact (a) ishouvik.com](mailto:contact@ishouvik.com)
+
+# ToDO
+- Add Docker support for Postgresql

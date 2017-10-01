@@ -7,7 +7,6 @@ end
 
 gem_group :development, :test do
   gem 'rb-fsevent', :require => false if RUBY_PLATFORM =~ /darwin/i
-  gem 'dotenv-rails'
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'minitest-rails'
@@ -44,8 +43,11 @@ end
 gem 'simple_form'
 gem 'kaminari'
 
-# Remove Sqlite3 gem
+# Remove Sqlite3 from Gemfile
 gsub_file 'Gemfile', /gem 'sqlite3'\n/, ''
+
+# Remove commented statements from Gemfile
+gsub_file 'Gemfile', /^\s*#.*\n/, ''
 
 after_bundle do
   run 'bundle exec guard init'
