@@ -57,9 +57,9 @@ after_bundle do
   remove_file 'config/database.yml'
 
   if database_type == "2"
-    copy_file   'config/mysql/database.yml', 'config/database.yml'
+    copy_file 'config/mysql/database.yml', 'config/database.yml'
   else
-    copy_file   'config/postgresql/database.yml', 'config/database.yml'
+    copy_file 'config/postgresql/database.yml', 'config/database.yml'
   end
   puts "\n================ DATABASE CONFIG GENERATED ================\n"
 
@@ -91,8 +91,17 @@ after_bundle do
   route "root to: 'static_pages#home'"
   puts "\n================ APPLICATION ROOT GENERATED ================\n"
 
+  copy_file 'Dockerfile'
+  copy_file 'docker-compose.yml'
+  copy_file 'docker-compose.production.yml'
+  copy_file 'bin/www/init.sh'
+  run 'chmod +x bin/www/init.sh'
+  puts "\n================ INITIALIZED DOCKER ================\n"
+
   run 'git init'
   run 'git add --all'
   run 'git commit -m "Intial commit"'
+  remove_file '.gitignore'
+  copy_file '.gitignore.example', '.gitignore'
   puts "\n================ GIT INITIALIZED ================\n"
 end

@@ -24,11 +24,12 @@ Please, feel to use the templates for your Rails apps and suggest chnages in the
 - Change environment variables in **.env** file
 - Cleanup the **Gemfile**
 
+# Docker Usage
+- Change the `DB_NAME` and `SECRET_KEY_BASE` values on the `.env.` file
+- Build and run the container: `docker-compose up -d`
+- If you make any change on the `Gemfile`. Force build the docker images for the changes to take place: `docker-compose up -d --build`
 
 ## Feel free to ping me:
 - [LinkedIn](https://in.linkedin.com/in/shouvikmukherjee)
 - [Twitted: @ishouvik](http://twitter.com/ishouvik)
 - [Mail: contact (a) ishouvik.com](mailto:contact@ishouvik.com)
-
-## ToDO
-- Make the template Docker ready
